@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagostinho HQ Dashboard</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --accent: #f43f5e; /* Lobster Red */
+            --green: #10b981;
+            --blue: #3b82f6;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .status {
+            font-size: 14px;
+            color: var(--green);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--card);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #334155;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent);
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 3px solid var(--blue);
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        .tag.done { background-color: var(--green); color: #000; }
+        .tag.wait { background-color: #f59e0b; color: #000; }
+        .tag.auto { background-color: var(--blue); color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="title">🦞 LAGOSTINHO_OS v1.0</div>
+    <div class="status">● ONLINE | USER: ESCOBAR</div>
+</div>
+
+<div class="grid">
+    <!-- RECENT ACTIVITY -->
+    <div class="card">
+        <h3>✅ Concluído (Hoje)</h3>
+        <ul>
+            <li>Configuração API Brave (Web Search) <span class="tag done">FIX</span></li>
+            <li>Metodologia de Busca SaaS <span class="tag done">STRATEGY</span></li>
+            <li>Catalogação Cardápio Bartzen <span class="tag done">DATA</span></li>
+            <li>Fórmula Viral "Novelas na Web" <span class="tag done">SCRIPT</span></li>
+            <li>Roteiro "A Babá e a Câmera" <span class="tag done">CONTENT</span></li>
+        </ul>
+    </div>
+
+    <!-- ACTIVE PROJECTS -->
+    <div class="card">
+        <h3>🚀 Projetos Ativos</h3>
+        <ul>
+            <li><strong>Bartzen Tap House:</strong> Aguardando ciclo de segunda-feira.</li>
+            <li><strong>SaaS Lab:</strong> Caça de oportunidades inicia amanhã.</li>
+            <li><strong>Novelas na Web:</strong> Modelo de roteiro validado.</li>
+        </ul>
+    </div>
+
+    <!-- AUTOMATION / CRON -->
+    <div class="card">
+        <h3>⚙️ Rotinas Automáticas</h3>
+        <ul>
+            <li>📅 <strong>Todo dia (Manhã):</strong> Enviar 1 ideia de Micro-SaaS validada (Acquire/Flippa/G2).</li>
+            <li>📅 <strong>Toda Segunda:</strong> Planejamento Agenda Semanal Bartzen.</li>
+            <li>📅 <strong>Diário (12:00):</strong> Enviar ideias de Plot para Novelas.</li>
+        </ul>
+    </div>
+
+    <!-- PENDING / BLOCKED -->
+    <div class="card">
+        <h3>⏳ Pendências / Em Espera</h3>
+        <ul>
+            <li>Feedback sobre o roteiro "A Babá" <span class="tag done">OK</span></li>
+            <li>Definição do formato final de entrega do SaaS <span class="tag wait">WAIT</span></li>
+            <li>Integração com Notion (Opcional) <span class="tag wait">IDEA</span></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
