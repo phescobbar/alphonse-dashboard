@@ -57,7 +57,7 @@
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 30px;
-            display: block; /* Hidden by default if empty via JS in future, strictly visible for now */
+            display: block; 
         }
         .error-title {
             color: var(--error);
@@ -136,12 +136,13 @@
         <div>OPERATOR: ESCOBAR</div>
     </div>
 
-    <!-- ERROR LOG SECTION (Populated manually by agent) -->
+    <!-- ERROR LOG SECTION (With Timestamps) -->
     <div class="error-log">
         <div class="error-title">⚠️ SYSTEM ALERTS / LAST ERRORS</div>
         <ul style="margin: 0; padding-left: 20px;">
-            <li>[2026-01-28] <strong>Brave API Rate Limit (429):</strong> Exceeded 1 req/sec. <em>Action: Implemented 2000ms delay protocol.</em></li>
-            <li>[2026-01-29] <strong>Reddit Scraping (403):</strong> Direct access forbidden. <em>Action: Switched strategy to open data sources (StarterStory/Hackernews).</em></li>
+            <li>[2026-01-28 14:22 UTC] <strong>Brave API (429):</strong> Rate limit hit. <em>Action: 2s Delay Protocol.</em></li>
+            <li>[2026-01-29 01:25 UTC] <strong>Reddit Access (403):</strong> Scraping blocked. <em>Action: Source Pivoted.</em></li>
+            <li>[2026-01-29 01:52 UTC] <strong>Cron Tool:</strong> Job parameter missing. <em>Action: Fixed schema.</em></li>
         </ul>
     </div>
 
@@ -151,36 +152,37 @@
             <div class="column-header" style="color: var(--text-secondary)">TODO / BACKLOG</div>
             <div class="task-list">
                 <div class="task-card">
-                    <div>Reformular cardápio completo do Bartzen</div>
+                    <div><strong>The Coffee:</strong> Setup bi-weekly reminder</div>
+                    <div style="font-size: 11px; color: #ef4444; margin-top:5px;">(Paused by user)</div>
                     <div class="task-meta">
-                        <span class="tag tag-bartzen">BARTZEN</span>
-                        <span>Next Week</span>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <div>Integrar Dashboard com Notion (Futuro)</div>
-                    <div class="task-meta">
-                        <span class="tag">SYSTEM</span>
-                        <span>Low Priority</span>
+                        <span class="tag tag-bartzen">THE COFFEE</span>
+                        <span>Pending</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- IN PROGRESS -->
+        <!-- IN PROGRESS / RECURRING -->
         <div class="column">
             <div class="column-header" style="color: var(--accent)">DOING / AUTOMATION</div>
             <div class="task-list">
                 <div class="task-card">
-                    <div><strong>Daily SaaS Hunt</strong></div>
-                    <div style="font-size: 12px; color: #94a3b8; margin-top: 5px;">Executing new search strategy (Open Data)</div>
+                    <div><strong>Bartzen Weekly Planning</strong></div>
+                    <div style="font-size: 11px; color: #94a3b8; margin-top:5px;">Suggest promos every Monday.</div>
                     <div class="task-meta">
-                        <span class="tag tag-saas">SAAS</span>
-                        <span>Every Morning</span>
+                        <span class="tag tag-bartzen">BARTZEN</span>
+                        <span>Mon 10:00 UTC</span>
                     </div>
                 </div>
                 <div class="task-card">
-                    <div><strong>Novelas Plot Generator</strong></div>
+                    <div><strong>Daily SaaS Hunt</strong></div>
+                    <div class="task-meta">
+                        <span class="tag tag-saas">SAAS</span>
+                        <span>Morning</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div><strong>Novelas Plot</strong></div>
                     <div class="task-meta">
                         <span class="tag tag-youtube">YOUTUBE</span>
                         <span>Daily 12:00</span>
@@ -194,31 +196,17 @@
             <div class="column-header" style="color: var(--success)">DONE</div>
             <div class="task-list">
                 <div class="task-card">
-                    <div>Update Dashboard to "Alphonse System"</div>
+                    <div>Fix Dashboard Errors</div>
                     <div class="task-meta">
                         <span class="tag">SYSTEM</span>
-                        <span>Just Now</span>
+                        <span>02:05 UTC</span>
                     </div>
                 </div>
                 <div class="task-card">
-                    <div>Create SaaS Research Methodology (v2)</div>
+                    <div>SaaS Methodology v2</div>
                     <div class="task-meta">
                         <span class="tag tag-saas">SAAS</span>
-                        <span>Strategy</span>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <div>Analyze "A Babá" Script</div>
-                    <div class="task-meta">
-                        <span class="tag tag-youtube">YOUTUBE</span>
-                        <span>Content</span>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <div>Catalog Bartzen Menu</div>
-                    <div class="task-meta">
-                        <span class="tag tag-bartzen">BARTZEN</span>
-                        <span>Data</span>
+                        <span>Complete</span>
                     </div>
                 </div>
             </div>
@@ -226,7 +214,7 @@
     </div>
 
     <div style="margin-top: 30px; text-align: center; font-size: 12px; color: var(--text-secondary);">
-        Last Update: 2026-01-29 01:35 UTC | Repo: phescobbar/alphonse-dashboard
+        Last Sync: 2026-01-29 02:08 UTC | Repo: phescobbar/alphonse-dashboard
     </div>
 
 </body>
