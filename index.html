@@ -3,128 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lagostinho HQ Dashboard</title>
+    <title>Alphonse System | Escobar</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #e2e8f0;
-            --accent: #f43f5e; /* Lobster Red */
-            --green: #10b981;
-            --blue: #3b82f6;
+            --bg: #0f1115;
+            --surface: #1a1d23;
+            --border: #2f3542;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --error: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
         }
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'JetBrains Mono', monospace;
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-primary);
             margin: 0;
             padding: 20px;
+            font-size: 14px;
         }
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
         }
-        .title {
-            font-size: 24px;
+        .brand {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Error Section */
+        .error-log {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 30px;
+            display: block; /* Hidden by default if empty via JS in future, strictly visible for now */
+        }
+        .error-title {
+            color: var(--error);
             font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .status {
-            font-size: 14px;
-            color: var(--green);
-        }
-        .grid {
+
+        /* Kanban Grid */
+        .kanban {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-        .card {
-            background-color: var(--card);
+        .column {
+            background: var(--surface);
             border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        .column-header {
             padding: 15px;
-            border: 1px solid #334155;
+            border-bottom: 1px solid var(--border);
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .card h3 {
-            margin-top: 0;
-            color: var(--accent);
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
+        .task-list {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .task-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 4px;
+            transition: transform 0.2s;
         }
-        li {
-            margin-bottom: 8px;
-            padding-left: 10px;
-            border-left: 3px solid var(--blue);
+        .task-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-secondary);
         }
         .tag {
-            display: inline-block;
             padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: bold;
-            margin-left: 5px;
+            border-radius: 3px;
+            background: var(--border);
         }
-        .tag.done { background-color: var(--green); color: #000; }
-        .tag.wait { background-color: #f59e0b; color: #000; }
-        .tag.auto { background-color: var(--blue); color: #fff; }
+        
+        /* Project Specific Tags */
+        .tag-bartzen { color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
+        .tag-saas { color: #818cf8; background: rgba(129, 140, 248, 0.1); }
+        .tag-youtube { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="title">🦞 LAGOSTINHO_OS v1.0</div>
-    <div class="status">● ONLINE | USER: ESCOBAR</div>
-</div>
+    <div class="header">
+        <div class="brand">
+            <span>🦾 ALPHONSE SYSTEM</span>
+            <span class="status-badge">ONLINE</span>
+        </div>
+        <div>OPERATOR: ESCOBAR</div>
+    </div>
 
-<div class="grid">
-    <!-- RECENT ACTIVITY -->
-    <div class="card">
-        <h3>✅ Concluído (Hoje)</h3>
-        <ul>
-            <li>Configuração API Brave (Web Search) <span class="tag done">FIX</span></li>
-            <li>Metodologia de Busca SaaS <span class="tag done">STRATEGY</span></li>
-            <li>Catalogação Cardápio Bartzen <span class="tag done">DATA</span></li>
-            <li>Fórmula Viral "Novelas na Web" <span class="tag done">SCRIPT</span></li>
-            <li>Roteiro "A Babá e a Câmera" <span class="tag done">CONTENT</span></li>
+    <!-- ERROR LOG SECTION (Populated manually by agent) -->
+    <div class="error-log">
+        <div class="error-title">⚠️ SYSTEM ALERTS / LAST ERRORS</div>
+        <ul style="margin: 0; padding-left: 20px;">
+            <li>[2026-01-28] <strong>Brave API Rate Limit (429):</strong> Exceeded 1 req/sec. <em>Action: Implemented 2000ms delay protocol.</em></li>
+            <li>[2026-01-29] <strong>Reddit Scraping (403):</strong> Direct access forbidden. <em>Action: Switched strategy to open data sources (StarterStory/Hackernews).</em></li>
         </ul>
     </div>
 
-    <!-- ACTIVE PROJECTS -->
-    <div class="card">
-        <h3>🚀 Projetos Ativos</h3>
-        <ul>
-            <li><strong>Bartzen Tap House:</strong> Aguardando ciclo de segunda-feira.</li>
-            <li><strong>SaaS Lab:</strong> Caça de oportunidades inicia amanhã.</li>
-            <li><strong>Novelas na Web:</strong> Modelo de roteiro validado.</li>
-        </ul>
+    <div class="kanban">
+        <!-- BACKLOG -->
+        <div class="column">
+            <div class="column-header" style="color: var(--text-secondary)">TODO / BACKLOG</div>
+            <div class="task-list">
+                <div class="task-card">
+                    <div>Reformular cardápio completo do Bartzen</div>
+                    <div class="task-meta">
+                        <span class="tag tag-bartzen">BARTZEN</span>
+                        <span>Next Week</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div>Integrar Dashboard com Notion (Futuro)</div>
+                    <div class="task-meta">
+                        <span class="tag">SYSTEM</span>
+                        <span>Low Priority</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IN PROGRESS -->
+        <div class="column">
+            <div class="column-header" style="color: var(--accent)">DOING / AUTOMATION</div>
+            <div class="task-list">
+                <div class="task-card">
+                    <div><strong>Daily SaaS Hunt</strong></div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 5px;">Executing new search strategy (Open Data)</div>
+                    <div class="task-meta">
+                        <span class="tag tag-saas">SAAS</span>
+                        <span>Every Morning</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div><strong>Novelas Plot Generator</strong></div>
+                    <div class="task-meta">
+                        <span class="tag tag-youtube">YOUTUBE</span>
+                        <span>Daily 12:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DONE -->
+        <div class="column">
+            <div class="column-header" style="color: var(--success)">DONE</div>
+            <div class="task-list">
+                <div class="task-card">
+                    <div>Update Dashboard to "Alphonse System"</div>
+                    <div class="task-meta">
+                        <span class="tag">SYSTEM</span>
+                        <span>Just Now</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div>Create SaaS Research Methodology (v2)</div>
+                    <div class="task-meta">
+                        <span class="tag tag-saas">SAAS</span>
+                        <span>Strategy</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div>Analyze "A Babá" Script</div>
+                    <div class="task-meta">
+                        <span class="tag tag-youtube">YOUTUBE</span>
+                        <span>Content</span>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div>Catalog Bartzen Menu</div>
+                    <div class="task-meta">
+                        <span class="tag tag-bartzen">BARTZEN</span>
+                        <span>Data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- AUTOMATION / CRON -->
-    <div class="card">
-        <h3>⚙️ Rotinas Automáticas</h3>
-        <ul>
-            <li>📅 <strong>Todo dia (Manhã):</strong> Enviar 1 ideia de Micro-SaaS validada (Acquire/Flippa/G2).</li>
-            <li>📅 <strong>Toda Segunda:</strong> Planejamento Agenda Semanal Bartzen.</li>
-            <li>📅 <strong>Diário (12:00):</strong> Enviar ideias de Plot para Novelas.</li>
-        </ul>
+    <div style="margin-top: 30px; text-align: center; font-size: 12px; color: var(--text-secondary);">
+        Last Update: 2026-01-29 01:35 UTC | Repo: phescobbar/alphonse-dashboard
     </div>
-
-    <!-- PENDING / BLOCKED -->
-    <div class="card">
-        <h3>⏳ Pendências / Em Espera</h3>
-        <ul>
-            <li>Feedback sobre o roteiro "A Babá" <span class="tag done">OK</span></li>
-            <li>Definição do formato final de entrega do SaaS <span class="tag wait">WAIT</span></li>
-            <li>Integração com Notion (Opcional) <span class="tag wait">IDEA</span></li>
-        </ul>
-    </div>
-</div>
 
 </body>
 </html>
